@@ -16,7 +16,20 @@
     <description>One Query for all</description>
     <url>https://github.com/Hygieia/${project.artifactId}</url>
 
+    <organization>
+        <name>Hygieia</name>
+        <url>https://www.github.com/Hygieia</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
     <properties>
+        <repository.name>hygieia-query</repository.name>
         <hamcrest.version>1.3</hamcrest.version>
         <jacoco.version>0.7.6.201602180812</jacoco.version>
         <jackson.version>2.7.9</jackson.version>
@@ -48,6 +61,39 @@
         <site.publish.checkout.directory>site-content</site.publish.checkout.directory>
         <spotbugs.plugin.version>3.1.11</spotbugs.plugin.version>
     </properties>
+
+    <developers>
+        <developer>
+            <name>Tapabrata Topo Pal</name>
+            <email>tapabrata.pal@capitalone.com</email>
+            <organization>CapitalOne</organization>
+            <organizationUrl>http://www.capitalone.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Raghavendra Vema</name>
+            <email>ragha.vema@capitalone.com</email>
+            <organization>CapitalOne</organization>
+            <organizationUrl>http://www.capitalone.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/Hygieia/${repository.name}.git</connection>
+        <developerConnection>scm:git:https://github.com/Hygieia/${repository.name}.git
+        </developerConnection>
+        <url>https://github.com/Hygieia/${repository.name}</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -137,30 +183,29 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <finalName>${project.artifactId}-${project.version}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
                 <executions>
                     <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
                         <goals>
-                            <goal>process</goal>
+                            <goal>single</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>target/generated-sources/java</outputDirectory>
-                            <processor>org.springframework.data.mongodb.repository.support.MongoAnnotationProcessor
-                            </processor>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -197,7 +242,7 @@
                     <configLocation>src/devops/checkstyle.xml</configLocation>
                     <suppressionsLocation>src/devops/checkstyle-suppressions.xml</suppressionsLocation>
                     <encoding>UTF-8</encoding>
-                    <consoleOutput>true</consoleOutput>
+                    <consoleOutput>false</consoleOutput>
                     <failsOnError>false</failsOnError>
                     <linkXRef>false</linkXRef>
                 </configuration>
@@ -560,7 +605,7 @@
                             <announcementDirectory>.</announcementDirectory>
                             <announcementFile>RELEASE-NOTES.txt</announcementFile>
                             <announceParameters>
-                                <releaseVersion>${version}</releaseVersion>
+                                <releaseVersion>${project.version}</releaseVersion>
                             </announceParameters>
                         </configuration>
                         <executions>
