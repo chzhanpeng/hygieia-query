@@ -35,7 +35,7 @@
         <jackson.version>2.7.9</jackson.version>
         <junit.version>4.12</junit.version>
         <pmd.version>3.6</pmd.version>
-        <spring.data.version>2.1.4.RELEASE</spring.data.version>
+        <spring.data.version>2.3.1.RELEASE</spring.data.version>
         <guava.version>27.0.1-jre</guava.version>
         <commons.collection.version>4.1</commons.collection.version>
         <querydsl.version>4.2.1</querydsl.version>
@@ -643,19 +643,19 @@
                                 <configuration>
                                     <tasks>
                                         <exec executable="git">
-                                            <arg line="clone -b gh-pages --single-branch ${site.publish.url} ${site.publish.checkout.directory}" />
+                                            <arg line="clone -b gh-pages --single-branch ${site.publish.url} ${site.publish.checkout.directory}"/>
                                         </exec>
 
                                         <exec executable="git" dir="site-content">
-                                            <arg line="fetch origin gh-pages" />
+                                            <arg line="fetch origin gh-pages"/>
                                         </exec>
 
                                         <exec executable="git" dir="site-content">
-                                            <arg line="reset --hard origin/gh-pages" />
+                                            <arg line="reset --hard origin/gh-pages"/>
                                         </exec>
 
                                         <pathconvert pathsep=" " property="dirs">
-                                            <dirset dir="${site.publish.checkout.directory}" includes="*" />
+                                            <dirset dir="${site.publish.checkout.directory}" includes="*"/>
                                         </pathconvert>
                                     </tasks>
                                 </configuration>
