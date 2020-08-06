@@ -21,7 +21,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.ASC, "description");
+        Sort expected = Sort.by(Sort.Direction.ASC, "description");
         assertEquals(actual, expected);
     }
 
@@ -48,7 +48,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.ASC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.ASC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
@@ -58,7 +58,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
@@ -68,7 +68,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
@@ -78,7 +78,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
@@ -88,10 +88,10 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description")
-                .and(new Sort(Sort.Direction.ASC, "name"))
-                .and(new Sort(Sort.Direction.ASC, "title"))
-                .and(new Sort(Sort.Direction.ASC, "address"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description")
+                .and(Sort.by(Sort.Direction.ASC, "name"))
+                .and(Sort.by(Sort.Direction.ASC, "title"))
+                .and(Sort.by(Sort.Direction.ASC, "address"));
         assertEquals(actual, expected);
     }
 
@@ -101,8 +101,8 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description")
-                .and(new Sort(Sort.Direction.ASC, "description"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description")
+                .and(Sort.by(Sort.Direction.ASC, "description"));
         assertEquals(actual, expected);
     }
 
@@ -112,7 +112,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "desc");
+        Sort expected = Sort.by(Sort.Direction.DESC, "desc");
         assertEquals(actual, expected);
     }
 
@@ -122,7 +122,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, false);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "desc1").and(new Sort(Sort.Direction.DESC, "desc"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "desc1").and(Sort.by(Sort.Direction.DESC, "desc"));
         assertEquals(actual, expected);
     }
 
@@ -171,7 +171,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, true);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.ASC, "description");
+        Sort expected = Sort.by(Sort.Direction.ASC, "description");
         assertEquals(actual, expected);
     }
 
@@ -181,7 +181,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, true);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.ASC, "description");
+        Sort expected = Sort.by(Sort.Direction.ASC, "description");
         assertEquals(actual, expected);
     }
 
@@ -191,7 +191,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, true);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description");
+        Sort expected = Sort.by(Sort.Direction.DESC, "description");
         assertEquals(actual, expected);
     }
 
@@ -201,7 +201,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, true);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
@@ -211,7 +211,7 @@ public class SortParserTest {
         Lexer lexer = new Lexer(new ByteArrayInputStream(s.getBytes()));
         SortParser sortParser = new SortParser(lexer, true);
         Sort actual = sortParser.build();
-        Sort expected = new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "name"));
+        Sort expected = Sort.by(Sort.Direction.DESC, "description").and(Sort.by(Sort.Direction.ASC, "name"));
         assertEquals(actual, expected);
     }
 
