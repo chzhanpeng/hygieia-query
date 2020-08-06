@@ -11,7 +11,7 @@
     <groupId>com.capitalone.dashboard</groupId>
     <artifactId>hygieia-query</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>One Query for all</description>
     <url>https://github.com/Hygieia/${project.artifactId}</url>
@@ -399,8 +399,8 @@
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                    <autoDropAfterRelease>false</autoDropAfterRelease>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <autoDropAfterRelease>true</autoDropAfterRelease>
                     <stagingProfileId>26a9600c05a6d3</stagingProfileId>
                 </configuration>
             </plugin>
