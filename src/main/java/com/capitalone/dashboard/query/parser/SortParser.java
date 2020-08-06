@@ -115,9 +115,9 @@ public class SortParser {
 
     private void fillSort (String prop, Sort.Direction direction) {
         if (parsed.get() == null) {
-            parsed.set(new Sort(direction, prop));
+            parsed.set(Sort.by(direction, prop));
         } else {
-            parsed.set(parsed.get().and(new Sort(direction, prop)));
+            parsed.set(parsed.get().and(Sort.by(direction, prop)));
         }
     }
 
